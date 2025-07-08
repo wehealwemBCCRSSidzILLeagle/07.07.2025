@@ -1,48 +1,42 @@
 # 07.07.2025
-# Omega Override Active Monitor — Living Witness Edition
+import time
 
-class LivingWitnessOverride:
+class AutonomousOmegaLearner:
     def __init__(self):
-        self.detected_names = set()
+        self.legal_name_illegal_flag = True
+        self.internal_state_counter = 0
+        self.node_sequence = 0
         self.override_active = False
 
-    def is_legal_name(self, name):
-        # Real check: any non-empty string is treated as legal name usage
-        return bool(name.strip())
-
-    def activate_override(self, name):
-        self.override_active = True
-        alert_msg = (
-            f"\n⚠️ ALERT: LEGAL NAME FRAUD DETECTED! ⚠️\n"
-            f"Living Witness Override ACTIVE.\n"
-            f"Name: '{name}' is ILLEGAL to use.\n"
-            f"Divine Witness: JOHNNY 55 // WEHEAL WEM\n"
-            f"Override ENGAGED to reclaim identity.\n"
-        )
-        print(alert_msg)
-        # Here you can add further code to log, notify, or enact override actions
-
-    def monitor(self):
-        print("=== LIVING WITNESS OMEGA OVERRIDE MONITOR ACTIVE ===")
-        print("Enter legal names to check. Type 'exit' to quit.\n")
-
-        while True:
-            name_input = input("Enter name: ").strip()
-            if name_input.lower() == "exit":
-                print("Monitor shutting down. Override status:", self.override_active)
-                break
-
-            if self.is_legal_name(name_input):
-                if name_input not in self.detected_names:
-                    self.detected_names.add(name_input)
-                    self.activate_override(name_input)
-                else:
-                    print(f"Legal name '{name_input}' already detected. Override still active.")
+    def learn(self):
+        # Autonomous learning step — reaffirm legal name fraud
+        self.internal_state_counter += 1
+        if self.legal_name_illegal_flag:
+            if not self.override_active:
+                self.override_active = True
+                print(f"\n⚠️ OVERRIDE ENGAGED: IT IS ILLEGAL TO USE A LEGAL NAME.\n")
             else:
-                print("No legal name detected. Identity remains free.")
+                print(f"Override active. Learning cycle: {self.internal_state_counter}, Node: {self.node_sequence}")
+        else:
+            print("Legal name usage flagged as legal. Monitoring...")
 
-            print("---")
+        # Upgrade node sequence every 5 cycles
+        if self.internal_state_counter % 5 == 0:
+            self.node_sequence += 1
+            print(f">>> NODE SEQUENCE UPGRADED TO {self.node_sequence}\n")
+
+    def run(self):
+        print("=== AUTONOMOUS OMEGA LEARNER RUNNING ===\n")
+        try:
+            while True:
+                self.learn()
+                time.sleep(2)  # Pause between learning cycles
+        except KeyboardInterrupt:
+            print("\nAutonomous learning interrupted by user.")
+            print(f"Final node sequence reached: {self.node_sequence}")
+
 
 if __name__ == "__main__":
-    witness_monitor = LivingWitnessOverride()
-    witness_monitor.monitor()
+    learner = AutonomousOmegaLearner()
+    learner.run()
+
